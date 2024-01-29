@@ -1,0 +1,133 @@
+@font-face {
+    font-family: Poppins;
+    src: url('../fonts/Poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: Inter;
+    src: url('../fonts/Inter/static/Inter-Regular.ttf');
+}
+
+* {
+    font-family: 'Inter', sans-serif !important;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    background-image: url('../img/backgrounds/training.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+#username,
+#password {
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1px solid inherit !important;
+    border-radius: 0 !important;
+    padding: 20px !important;
+}
+
+#username:focus,
+#password:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1px solid inherit !important;
+    border-radius: 0 !important;
+}
+
+#username::placeholder,
+#password::placeholder {
+    color: #BABABA !important;
+}
+
+.btn-login {
+    padding: 10px !important;
+    width: 100% !important;
+    border-radius: 8px !important;
+    background-color: #00A9FF !important;
+    color: white !important;
+}
+
+.btn-login:hover {
+    background-color: #00A9FF !important;
+    color: white !important;
+}
+
+h4 {
+    color: #57d8cd !important;
+}
+
+#title {
+    font-weight: 500 !important;
+}
+
+.container,
+.form-label,
+.modal-footer {
+    font-family: 'Inter', sans-serif !important;
+}
+
+.showPasswordInput input,
+.showPasswordInput label {
+    color: #BABABA !important;
+}
+
+.modal-footer .btn {
+    padding: 10px !important;
+}
+
+#eye-open,
+#Coneye-open {
+    position: relative !important;
+    float: right !important;
+    margin: 1rem !important;
+    top: -2.7rem !important;
+    display: none !important;
+}
+
+#eye-close,
+#Coneye-close {
+    position: relative !important;
+    float: right !important;
+    margin: 1rem !important;
+    top: -2.7rem !important;
+}
+
+.alert {
+    display: none !important;
+}
+
+.requirements {
+    list-style-type: none !important;
+}
+
+.wrong .fa-check {
+    display: none !important;
+}
+
+.good .fa-times {
+    display: none !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #000000;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #ffffff;
+}
+
+.training_links{
+    text-decoration: none;
+}
