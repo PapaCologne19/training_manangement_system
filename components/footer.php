@@ -8,6 +8,81 @@
    <script src="../../assets/vendor/js/menu.js"></script>
    <!-- endbuild -->
 
+   <script>
+      // Accept Training Requests
+      $('#example').on('click', '.accept_btn', function(e) {
+         e.preventDefault();
+
+         var accept_id = $(this).closest("tr").find('.id').val();
+
+         Swal.fire({
+            title: "Are you sure you want to accept?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+            cancelButtonText: "No"
+         }).then((willDelete) => {
+            if (willDelete.isConfirmed) {
+               $.ajax({
+                  type: "POST",
+                  url: "../../controller/trainingController.php",
+                  data: {
+                     "accept_button_click": 1,
+                     "accept_id": accept_id
+                  },
+                  success: function(response) {
+                     Swal.fire({
+                        title: "Success",
+                        icon: "success"
+                     }).then((result) => {
+                        location.reload();
+                     });
+                  },
+                  error: function(xhr, status, error) {
+                     console.log("AJAX Error: " + error);
+                  }
+               });
+            }
+         });
+      });
+
+      // Reject Training Request
+      $('#example').on('click', '.reject_btn', function(e) {
+         e.preventDefault();
+
+         var reject_id = $(this).closest("tr").find('.id').val();
+
+         Swal.fire({
+            title: "Are you sure you want to accept?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+            cancelButtonText: "No"
+         }).then((willDelete) => {
+            if (willDelete.isConfirmed) {
+               $.ajax({
+                  type: "POST",
+                  url: "../../controller/trainingController.php",
+                  data: {
+                     "reject_button_click": 1,
+                     "reject_id": reject_id
+                  },
+                  success: function(response) {
+                     Swal.fire({
+                        title: "Success",
+                        icon: "success"
+                     }).then((result) => {
+                        location.reload();
+                     });
+                  },
+                  error: function(xhr, status, error) {
+                     console.log("AJAX Error: " + error);
+                  }
+               });
+            }
+         });
+      });
+   </script>
 
    <!-- Data Table -->
    <script>

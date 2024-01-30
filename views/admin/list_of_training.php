@@ -33,7 +33,7 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
                     <div class="content-wrapper">
                         <div class="container">
                             <div class="card">
-                                <div class="container">
+                                <div class="container table-responsive">
                                     <hr>
                                     <h4 class="text-center">LIST OF TRAININGS</h4>
                                     <hr>
@@ -56,13 +56,15 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
                                             <?php
                                             $show = $Training->showTraining();
                                             while ($row = $show->fetch(PDO::FETCH_ASSOC)) {
+                                                $date_create = date_create($row['datetime']);
+                                                $date_format = date_format($date_create, 'F d, Y - h:i A')
                                                 ?>
                                                 <tr>
                                                     <td class="text-center">
                                                         <?php echo $row['training_title']; ?>
                                                     </td>
                                                     <td class="text-center">
-                                                        <?php echo $row['datetime']; ?>
+                                                        <?php echo $date_format; ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <?php echo $row['venue']; ?>
@@ -74,7 +76,7 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
                                                         <?php echo $row['division']; ?>
                                                     </td>
                                                     <td class="text-center">
-                                                        <button class="btn btn-sm btn-success">Edit</button>
+                                                        <a href="edit_list_of_training.php?id=<?= $row["id"]?>" class="btn btn-sm btn-success">Edit</a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>

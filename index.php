@@ -1,4 +1,4 @@
-<?php session_start(); 
+<?php session_start();
 include 'model/connect.php';
 include 'model/Supervisor.php';
 
@@ -7,9 +7,25 @@ $connect = $database->connect();
 
 $Supervisor = new Supervisor($connect);
 
+$counterFile = 'assets/files/counter.txt';
+
+// Check if the counter file exists
+if (file_exists($counterFile)) {
+    $count = (int) file_get_contents($counterFile);
+
+    if (!isset($_SESSION['user_counted'])) {
+        $count++;
+        $_SESSION['user_counted'] = true;
+        file_put_contents($counterFile, $count);
+    }
+
+} else {
+    echo "Error: Counter file not found.";
+}
+
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="body">
 
 <head>
     <meta charset="UTF-8">
@@ -39,7 +55,7 @@ $Supervisor = new Supervisor($connect);
     <title>Login</title>
 </head>
 
-<body class="body">
+<body>
     <?php include 'components/alertMessage.php'; ?>
     <center>
         <div class="container position-absolute top-50 start-50 translate-middle">
@@ -58,6 +74,7 @@ $Supervisor = new Supervisor($connect);
                                 <div class="col-lg-12 forms">
                                     <form id="login-form" class="col-lg-offset-1 col-lg-10 forms"
                                         action="controller/userController.php" method="post" style="display: block;">
+                                        <input type="hidden" name="count" value="<?= $count ?>">
                                         <div class="mt-1 d-flex align-items-center">
                                             <i class="bi bi-person me-2"></i>
                                             <input type="text" name="username" id="username" tabindex="1"
@@ -130,14 +147,27 @@ $Supervisor = new Supervisor($connect);
                                 <label for="" class="form-label">Email Address</label>
                                 <input type="email" name="email_address" class="form-control" required>
                             </div>
+
                             <div class="col-md-12">
                                 <label for="" class="form-label">Division</label>
-                                <input type="text" name="division" class="form-control" required>
+                                <select name="division" class="form-select" id="division" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="BD1">BD1</option>
+                                    <option value="BD2">BD2</option>
+                                    <option value="BD3">BD3</option>
+                                    <option value="BSG">BSG</option>
+                                    <option value="HR">HR</option>
+                                    <option value="FINANCE">FINANCE</option>
+                                    <option value="PPI">PPI</option>
+                                    <option value="STRAT">STRAT</option>
+                                </select>
                             </div>
+
                             <div class="col-md-12">
                                 <label for="" class="form-label">ID Number</label>
-                                <input type="text" name="id_number" class="form-control" required>
+                                <input type="text" name="id_number" class="form-control" srequired>
                             </div>
+
                             <div class="col-md-12">
                                 <label for="" class="form-label">Principal</label>
                                 <input list="principals" name="principal" id="principal" class="form-control" required>
@@ -165,11 +195,13 @@ $Supervisor = new Supervisor($connect);
                                     required>
                                 <datalist id="supervisors">
                                     <option value="" selected disabled></option>
-                                    <?php 
-                                        $show = $Supervisor->show();
-                                        while($row = $show->fetch(PDO::FETCH_ASSOC)){
-                                    ?>
-                                    <option value="<?php echo $row['supervisor'];?>"><?php echo $row['supervisor'];?></option>
+                                    <?php
+                                    $show = $Supervisor->show();
+                                    while ($row = $show->fetch(PDO::FETCH_ASSOC)) {
+                                        ?>
+                                        <option value="<?php echo $row['supervisor']; ?>">
+                                            <?php echo $row['supervisor']; ?>
+                                        </option>
                                     <?php } ?>
                                 </datalist>
                             </div>

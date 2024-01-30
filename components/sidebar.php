@@ -33,10 +33,10 @@
     </li>
     <li class="menu-item">
       <a href="list_of_training.php" class="menu-link">
-        <i class="bi bi-send-exclamation" style="margin-right: 1rem;"></i>
+        <i class="bi bi-card-checklist" style="margin-right: 1rem;"></i>
         <div data-i18n="Analytics">List of Trainings</div>
       </a>
     </li>
-    
+
   </ul>
 </aside>

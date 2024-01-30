@@ -39,4 +39,16 @@ class User
         }
     }
 
+    public function logs($username, $name, $usertype, $count){
+        $query = "INSERT INTO logs (username, name, user_type, count_visit) VALUES (?, ?, ?, ?)";
+        $stmt = $this->connect->prepare($query);
+        $stmt->bindParam(1, $username);
+        $stmt->bindParam(2, $name);
+        $stmt->bindParam(3, $usertype);
+        $stmt->bindParam(4, $count);
+        if($stmt->execute()){
+            return $stmt;
+        }
+    }
+
 }

@@ -31,7 +31,7 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
                     <div class="content-wrapper">
                         <div class="container">
                             <div class="card">
-                                <div class="container">
+                                <div class="container table-responsive">
                                     <hr>
                                         <h4 class="text-center">TRAINING REQUESTS</h4>
                                     <hr>
@@ -41,10 +41,11 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
                                             <tr>
                                                 <th class="text-center">Training Title</th>
                                                 <th class="text-center">Date and Time Requested</th>
-                                                <th class="text-center">Requestor</th>
                                                 <th class="text-center">Venue</th>
+                                                <th class="text-center">Requestor</th>
                                                 <th class="text-center">Facilitator</th>
                                                 <th class="text-center">Division</th>
+                                                <th class="text-center">Request Status</th>
                                                 <th class="text-center">Action</th>   
                                             </tr>
                                         </thead>
@@ -61,7 +62,26 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
                                                     <td class="text-center"><?php echo $row['facilitator'];?></td>
                                                     <td class="text-center"><?php echo $row['division'];?></td>
                                                     <td class="text-center">
-                                                        <button class="btn btn-sm btn-success">Accept</button>
+                                                        <?php 
+                                                            if($row['is_approve'] === '0'){
+                                                            echo '<span class="badge bg-warning rounded">Pending</span>';    
+                                                            } elseif($row['is_approve'] === '1'){
+                                                            echo '<span class="badge bg-success rounded">Approved</span>';
+                                                            } else {
+                                                                echo '<span class="badge bg-danger rounded">Rejected</span>';
+                                                            }
+                                                        ?>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <?php 
+                                                            if($row['is_approve'] === '0'){ ?>
+                                                            <input type="hidden" class="id" value="<?= $row['id'];?>">
+                                                            <button type="button" class="btn btn-sm btn-success accept_btn">Accept</button>
+                                                            <button type="button" class="btn btn-sm btn-danger reject_btn">Reject</button>
+                                                        <?php } else { ?>
+                                                            <button type="button" class="btn btn-sm btn-success" disabled>Accept</button>
+                                                            <button type="button" class="btn btn-sm btn-danger" disabled>Reject</button>
+                                                        <?php }?>
                                                     </td>
                                                 </tr>
                                             <?php }?>

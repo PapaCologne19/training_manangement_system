@@ -55,27 +55,26 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
                     $date_format = date_format($date_create, 'F j, Y - h:i a');
                     ?>
                     <div class="col-md-4">
-                        <a href="create.php" class="training_links" >
+                        <a href="create.php?id=<?= $row['id'];?>" class="training_links">
                             <div class="card p-3 mb-2">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex flex-row align-items-center">
                                         <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
                                         <div class="ms-2 c-details">
-                                            <h6 class="mb-0"><?php echo $row['training_title'];?></h6> <span><?php echo $date_format;?></span>
+                                            <h6 class="mb-0">
+                                                <?php echo $row['training_title']; ?>
+                                            </h6> <span>
+                                                <?php echo $date_format; ?>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="badge"> <span>Design</span> </div>
                                 </div>
                                 <div class="mt-5">
-                                    <h3 class="heading"><?php echo $row['training_title'];?></h3>
+                                    <h3 class="heading">
+                                        <?php echo $row['training_title']; ?>
+                                    </h3>
                                     <div class="mt-5">
-                                        <!-- <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div> -->
-                                        <!-- <div class="mt-3"> <span class="text1">32 Applied <span class="text2">of 50
-                                            capacity</span></span>
-                                </div> -->
                                     </div>
                                 </div>
                             </div>

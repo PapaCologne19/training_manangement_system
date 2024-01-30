@@ -1,5 +1,12 @@
 <?php
 session_start();
+require_once '../../model/connect.php';
+require_once '../../model/Training.php';
+
+$database = new Database();
+$connect = $database->connect();
+
+$Training = new Training($connect);
 
 if (isset($_SESSION['username'], $_SESSION['password'])) {
     ?>
@@ -39,39 +46,44 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-body">
+                            <?php 
+                                $id = $_GET['id'];
+                                $show = $Training->showTrainingById($id);
+                                $row = $show->fetch(PDO::FETCH_ASSOC);
+                            ?>
                             <form action="../../controller/trainingController.php" method="POST" class="form-group">
                                 <input type="hidden" name="token" value="<?php echo $_SESSION['id']; ?>">
                                 <div class="col-md-12 mt-3">
                                     <label for="" class="form-label">Name</label>
-                                    <input type="text" name="name" id="name" class="form-control" required>
+                                    <input type="text" name="name" id="name" class="form-control" value="<?php echo $_SESSION['firstname']?>" readonly required>
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label for="" class="form-label">Training Title</label>
-                                    <input type="text" name="training_title" id="training_title" class="form-control"
+                                    <input type="text" name="training_title" id="training_title" value="<?php echo $row['training_title']?>" readonly class="form-control"
                                         required>
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label for="" class="form-label">Date and Time</label>
-                                    <input type="datetime-local" name="dateTime" id="dateTime" class="form-control"
+                                    <input type="datetime-local" name="dateTime" id="dateTime" value="<?php echo $row['datetime']?>" readonly class="form-control"
                                         required>
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label for="" class="form-label">Venue</label>
-                                    <input type="text" name="venue" id="venue" class="form-control" required>
+                                    <input type="text" name="venue" id="venue" class="form-control" value="<?php echo $row['venue']?>" readonly required>
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label for="" class="form-label">Facilitator</label>
-                                    <input type="text" name="facilitator" id="facilitator" class="form-control" required>
+                                    <input type="text" name="facilitator" id="facilitator" value="<?php echo $row['facilitator']?>" class="form-control" readonly required>
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label for="" class="form-label">Division</label>
-                                    <input type="text" name="division" id="division" class="form-control" required>
+                                    <input type="text" name="division" id="division" class="form-control" value="<?php echo $_SESSION['division']?>" readonly required>
                                 </div>
 
                                 <div class="col-md-12 mt-5 mb-3 text-center">
                                     <button type="button" class="btn btn-secondary" onclick="location.href = 'index.php'"
                                         </button>Back</button>
-                                    <button type="submit" name="register_btn" class="btn btn-primary">Submit</button>
+                                    <button type="submit" name="register_btn" class="btn btn-primary">Request</button>
                                 </div>
                             </form>
                         </div>

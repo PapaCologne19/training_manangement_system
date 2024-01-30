@@ -12,6 +12,7 @@ $User = new User($connect);
 if (isset($_POST['login-submit'])) {
     $User->username = $_POST['username'];
     $password = $_POST['password'];
+    $count = $_POST['count'];
 
     $stmt = $User->login();
 
@@ -28,10 +29,14 @@ if (isset($_POST['login-submit'])) {
                     $_SESSION['firstname'] = $row['firstname'];
                     $_SESSION['lastname'] = $row['lastname'];
                     $_SESSION['user_type'] = $row['user_type'];
+                    $_SESSION['division'] = $row['division'];
+                    $name = $_SESSION['firstname'] . " " . $_SESSION['lastname'];
 
+                    // Save the logs
+                    $logs = $User->logs($_SESSION['username'], $name, $_SESSION['user_type'], $count);
                     header("Location: ../views/training/index.php");
                     $_SESSION['successMessage'] = "Welcome, " . $row['firstname'];
-                break;
+                    break;
 
                 case "ADMIN":
                     $_SESSION['id'] = $row['id'];
@@ -40,14 +45,19 @@ if (isset($_POST['login-submit'])) {
                     $_SESSION['firstname'] = $row['firstname'];
                     $_SESSION['lastname'] = $row['lastname'];
                     $_SESSION['user_type'] = $row['user_type'];
+                    $_SESSION['division'] = $row['division'];
+
+                    $name = $_SESSION['firstname'] . " " . $_SESSION['lastname'];
+                    // Save the logs
+                    $logs = $User->logs($_SESSION['username'], $name, $_SESSION['user_type'], $count);
 
                     $_SESSION['successMessage'] = "Welcome, Admin " . $row['firstname'];
                     header("Location: ../views/admin/index.php");
-                break;
+                    break;
                 default:
                     $_SESSION['errorMessage'] = "Wrong username or password";
                     header("Location: ../index.php");
-                break;
+                    break;
             }
         } else {
             $_SESSION['errorMessage'] = "Wrong username or password";
