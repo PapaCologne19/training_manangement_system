@@ -1,7 +1,8 @@
 <?php
 session_start();
-require_once '../model/connect.php';
-require_once '../model/Training.php';
+include '../model/connect.php';
+include '../model/Training.php';
+include '../mail/mail.php';
 
 $database = new Database();
 $connect = $database->connect();
@@ -16,6 +17,9 @@ if (isset($_POST['register_btn'])) {
     $venue = $_POST['venue'];
     $facilitator = $_POST['facilitator'];
     $division = $_POST['division'];
+    $email = $_SESSION['email'];
+    $fullname = $_SESSION['firstname'] . " " . $_SESSION['lastname'];
+
 
     if (
         !empty($user_id) && !empty($training_title)
@@ -25,6 +29,7 @@ if (isset($_POST['register_btn'])) {
         $insert = $Training->registerTraining($user_id, $training_title, $dateTime, $venue, $facilitator, $division);
 
         if ($insert) {
+            sendNotificationMail($email, $fullname);
             $_SESSION['successMessage'] = "Success";
         } else {
             $_SESSION['errorMessage'] = "Error";
@@ -94,10 +99,13 @@ if (isset($_POST['update_training_btn'])) {
 // Accepting Training Request
 if (isset($_POST['accept_button_click'])) {
     $id = $_POST['accept_id'];
+    $email = $_POST['email'];
+    $fullname = $_POST['fullname'];
 
     if (!empty($id)) {
         $accept = $Training->acceptTrainingRequest($id);
         if ($accept) {
+            sendApprovedMessage($email, $fullname);
             $_SESSION['successMessage'] = "Success";
         } else {
             $_SESSION['errorMessage'] = "Error";
@@ -112,10 +120,13 @@ if (isset($_POST['accept_button_click'])) {
 // Rejecting Training Request
 if (isset($_POST['reject_button_click'])) {
     $id = $_POST['reject_id'];
+    $email = $_POST['email'];
+    $fullname = $_POST['fullname'];
 
     if (!empty($id)) {
         $accept = $Training->RejectTrainingRequest($id);
         if ($accept) {
+            sendRejectionMessage($email, $fullname);
             $_SESSION['successMessage'] = "Success";
         } else {
             $_SESSION['errorMessage'] = "Error";

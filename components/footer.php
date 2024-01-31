@@ -14,6 +14,8 @@
          e.preventDefault();
 
          var accept_id = $(this).closest("tr").find('.id').val();
+         var email = $(this).closest("tr").find('.email').val();
+         var fullname = $(this).closest("tr").find('.fullname').val();
 
          Swal.fire({
             title: "Are you sure you want to accept?",
@@ -28,7 +30,9 @@
                   url: "../../controller/trainingController.php",
                   data: {
                      "accept_button_click": 1,
-                     "accept_id": accept_id
+                     "accept_id": accept_id,
+                     "email": email,
+                     "fullname": fullname,
                   },
                   success: function(response) {
                      Swal.fire({
@@ -51,6 +55,8 @@
          e.preventDefault();
 
          var reject_id = $(this).closest("tr").find('.id').val();
+         var email = $(this).closest("tr").find('.email').val();
+         var fullname = $(this).closest("tr").find('.fullname').val();
 
          Swal.fire({
             title: "Are you sure you want to accept?",
@@ -65,7 +71,9 @@
                   url: "../../controller/trainingController.php",
                   data: {
                      "reject_button_click": 1,
-                     "reject_id": reject_id
+                     "reject_id": reject_id,
+                     "email": email,
+                     "fullname": fullname
                   },
                   success: function(response) {
                      Swal.fire({

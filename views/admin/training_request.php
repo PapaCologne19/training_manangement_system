@@ -74,8 +74,11 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
                                                     </td>
                                                     <td class="text-center">
                                                         <?php 
+                                                            $fullname = $row['firstname'] . " " . $row['lastname'];
                                                             if($row['is_approve'] === '0'){ ?>
                                                             <input type="hidden" class="id" value="<?= $row['id'];?>">
+                                                            <input type="hidden" class="email" value="<?= $row['email_address'];?>">
+                                                            <input type="hidden" class="fullname" value="<?= $fullname;?>">
                                                             <button type="button" class="btn btn-sm btn-success accept_btn">Accept</button>
                                                             <button type="button" class="btn btn-sm btn-danger reject_btn">Reject</button>
                                                         <?php } else { ?>

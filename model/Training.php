@@ -20,7 +20,6 @@ class Training
         $stmt->bindParam(4, $venue);
         $stmt->bindParam(5, $facilitator);
         $stmt->bindParam(6, $division);
-
         if ($stmt->execute()) {
             return $stmt;
         }
@@ -66,7 +65,6 @@ class Training
         $stmt->bindParam(3, $venue);
         $stmt->bindParam(4, $facilitator);
         $stmt->bindParam(5, $division);
-
         if ($stmt->execute()) {
             return $stmt;
         }
@@ -82,7 +80,6 @@ class Training
         $stmt->bindParam(4, $facilitator);
         $stmt->bindParam(5, $division);
         $stmt->bindParam(6, $id);
-
         if ($stmt->execute()) {
             return $stmt;
         }

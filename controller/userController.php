@@ -30,6 +30,7 @@ if (isset($_POST['login-submit'])) {
                     $_SESSION['lastname'] = $row['lastname'];
                     $_SESSION['user_type'] = $row['user_type'];
                     $_SESSION['division'] = $row['division'];
+                    $_SESSION['email'] = $row['email_address'];
                     $name = $_SESSION['firstname'] . " " . $_SESSION['lastname'];
 
                     // Save the logs
@@ -46,6 +47,7 @@ if (isset($_POST['login-submit'])) {
                     $_SESSION['lastname'] = $row['lastname'];
                     $_SESSION['user_type'] = $row['user_type'];
                     $_SESSION['division'] = $row['division'];
+                    $_SESSION['email'] = $row['email_address'];
 
                     $name = $_SESSION['firstname'] . " " . $_SESSION['lastname'];
                     // Save the logs
