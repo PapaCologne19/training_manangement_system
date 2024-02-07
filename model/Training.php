@@ -104,4 +104,40 @@ class Training
             return $stmt;
         }
     }
+
+    public function setAsDone($id)
+    {
+        $query = "UPDATE training_request SET is_done = '1' WHERE id = ?";
+        $stmt = $this->connect->prepare($query);
+        $stmt->bindParam(1, $id);
+        if ($stmt->execute()) {
+            return $stmt;
+        }
+    }
+    public function checkTrainingRequest($id, $training_title)
+    {
+        $query = "SELECT * FROM training_request WHERE user_id = ? AND training_title = ? AND is_approve = '0'";
+        $stmt = $this->connect->prepare($query);
+        $stmt->bindParam(1, $id);
+        $stmt->bindParam(2, $training_title);
+        if ($stmt->execute()) {
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return count($result);
+        }
+    }
+
+    public function selectUserWithIDandUserID($id, $user_id)
+    {
+        $query = "SELECT users.*, request.*, request.created_at AS date_created
+        FROM users
+        JOIN training_request request ON request.user_id = users.id
+        WHERE request.id = ?
+        AND request.user_id = ?";
+        $stmt = $this->connect->prepare($query);
+        $stmt->bindParam(1, $id);
+        $stmt->bindParam(2, $user_id);
+        if ($stmt->execute()) {
+            return $stmt;
+        }
+    }
 }

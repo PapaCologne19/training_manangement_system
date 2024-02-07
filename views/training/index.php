@@ -5,7 +5,7 @@ require_once '../../model/Training.php';
 
 $database = new Database();
 $connect = $database->connect();
-
+ 
 $Training = new Training($connect);
 
 if (isset($_SESSION['username'], $_SESSION['password'])) {
@@ -55,25 +55,25 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
                     $date_format = date_format($date_create, 'F j, Y - h:i a');
                     ?>
                     <div class="col-md-4">
-                        <a href="create.php?id=<?= $row['id'];?>" class="training_links">
-                            <div class="card p-3 mb-2">
+                        <a href="create.php?id=<?= $row['id']; ?>" class="training_links">
+                            <div class="card p-4 mb-3 shadow-sm rounded">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex flex-row align-items-center">
-                                        <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                                        <div class="ms-2 c-details">
-                                            <h6 class="mb-0">
-                                                <?php echo $row['training_title']; ?>
-                                            </h6> <span>
-                                                <?php echo $date_format; ?>
-                                            </span>
-                                        </div>
+                                        <i class="bi bi-bank2"></i>
                                     </div>
                                     <div class="badge"> <span>Design</span> </div>
                                 </div>
                                 <div class="mt-5">
-                                    <h3 class="heading">
+                                    <h4 class="heading fw-semibold">
                                         <?php echo $row['training_title']; ?>
-                                    </h3>
+                                    </h4>
+                                    <span class="mb-0 text-body-secondary">
+                                        <?php echo $date_format; ?>
+                                    </span>
+                                    <br>
+                                    <span class="mb-0 text-body-secondary">
+                                        <?php echo $row['venue']; ?>
+                                    </span>
                                     <div class="mt-5">
                                     </div>
                                 </div>

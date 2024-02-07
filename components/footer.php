@@ -90,6 +90,45 @@
             }
          });
       });
+
+      // Set as Done the Training Status
+      $('#example').on('click', '.done_btn', function(e) {
+         e.preventDefault();
+
+         var id = $(this).closest("tr").find('.id').val();
+         var user_id = $(this).closest("tr").find('.user_id').val();
+
+         Swal.fire({
+            title: "Are you sure?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+            cancelButtonText: "No"
+         }).then((willDelete) => {
+            if (willDelete.isConfirmed) {
+               $.ajax({
+                  type: "POST",
+                  url: "../../controller/trainingController.php",
+                  data: {
+                     "button_click": 1,
+                     "id": id,
+                     "user_id": user_id,
+                  },
+                  success: function(response) {
+                     Swal.fire({
+                        title: "Success",
+                        icon: "success"
+                     }).then((result) => {
+                        location.reload();
+                     });
+                  },
+                  error: function(xhr, status, error) {
+                     console.log("AJAX Error: " + error);
+                  }
+               });
+            }
+         });
+      });
    </script>
 
    <!-- Data Table -->

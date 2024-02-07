@@ -53,6 +53,7 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
                             ?>
                             <form action="../../controller/trainingController.php" method="POST" class="form-group">
                                 <input type="hidden" name="token" value="<?php echo $_SESSION['id']; ?>">
+                                <input type="hidden" name="training_id" value="<?php echo $id; ?>">
                                 <div class="col-md-12 mt-3">
                                     <label for="" class="form-label">Name</label>
                                     <input type="text" name="name" id="name" class="form-control" value="<?php echo $_SESSION['firstname']?>" readonly required>
