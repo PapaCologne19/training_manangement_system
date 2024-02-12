@@ -146,10 +146,6 @@ input:-webkit-autofill:active {
     transform: translateY(-50%) !important;
 }
 
-.footer_credit{
-    
-}
-
 @media screen and (max-width: 1600px) {
     .containers {
         position: absolute !important;
@@ -157,13 +153,14 @@ input:-webkit-autofill:active {
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
     }
-    .login-form{
+
+    .login-form {
         background-color: #1f2568 !important;
     }
 }
 
 @media screen and (max-width: 560px) {
-    .containers{
+    .containers {
         width: 90% !important;
     }
 }

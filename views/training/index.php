@@ -37,10 +37,6 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
         <!-- {{-- Sweet Alert --}} -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        <!-- Toasty.js -->
-        <link href="../../node_modules/egalink-toasty.js/dist/toasty.min.css" rel="stylesheet">
-        <script src="../../node_modules/egalink-toasty.js/dist/toasty.min.js"></script>
-
         <title>Home</title>
     </head>
 
