@@ -34,3 +34,7 @@
 <link rel="stylesheet" href="../../assets/vendor/libs/apex-charts/apex-charts.css" />
 <script src="../../assets/vendor/js/helpers.js"></script>
 <script src="../../assets/js/config.js"></script>
+
+<!-- Noty -->
+<link href="../../vendor/needim/noty/lib/noty.css" rel="stylesheet">
+<script src="../../vendor/needim/noty/lib/noty.js" type="text/javascript"></script>

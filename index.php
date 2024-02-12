@@ -58,9 +58,9 @@ if (file_exists($counterFile)) {
 <body>
     <?php include 'components/alertMessage.php'; ?>
     <center>
-        <div class="container position-absolute top-50 start-50 translate-middle">
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 col-sm-12 col-md-offset-3 bg-white">
+        <div class="containers">
+            <div class="row justify-content-center w-100">
+                <div class="login-form col-lg-6 col-md-12 col-sm-12 rounded-2 shadow-lg p-3 mb-5">
                     <div class="panel">
                         <div class="panel-heading pt-3">
                             <div class="panel-title text-center mt-4" id="title">
@@ -112,6 +112,7 @@ if (file_exists($counterFile)) {
                 </div>
             </div>
         </div>
+
     </center>
 
     <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">

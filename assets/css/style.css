@@ -16,7 +16,7 @@
 }
 
 .body {
-    background-image: url('../img/backgrounds/training.jpg');
+    background-image: url('../img/backgrounds/bg.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -31,6 +31,8 @@
     border-bottom: 1px solid inherit !important;
     border-radius: 0 !important;
     padding: 20px !important;
+    background: transparent;
+    color: white !important;
 }
 
 #username:focus,
@@ -42,6 +44,7 @@
     border-left: none !important;
     border-bottom: 1px solid inherit !important;
     border-radius: 0 !important;
+    color: white;
 }
 
 #username::placeholder,
@@ -123,11 +126,44 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     -webkit-background-clip: text;
-    -webkit-text-fill-color: #000000;
+    -webkit-text-fill-color: #ffffff;
     transition: background-color 5000s ease-in-out 0s;
-    box-shadow: inset 0 0 20px 20px #ffffff;
+    box-shadow: inset 0 0 20px 20px transparent;
 }
 
-.training_links{
+.training_links {
     text-decoration: none;
+}
+
+.bi {
+    color: #BABABA;
+}
+
+.containers {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+.footer_credit{
+    
+}
+
+@media screen and (max-width: 1600px) {
+    .containers {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+    .login-form{
+        background-color: #1f2568 !important;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .containers{
+        width: 90% !important;
+    }
 }

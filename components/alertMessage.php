@@ -1,4 +1,4 @@
-<?php
+<?php 
 if (isset($_SESSION['successMessage'])) { ?>
     <script>
         Swal.fire({
@@ -7,8 +7,8 @@ if (isset($_SESSION['successMessage'])) { ?>
         })
     </script>
     <?php unset($_SESSION['successMessage']);
-}
-
+} ?>
+<?php
 if (isset($_SESSION['errorMessage'])) { ?>
     <script>
         Swal.fire({
