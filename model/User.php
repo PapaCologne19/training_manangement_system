@@ -14,26 +14,26 @@ class User
         $query = "SELECT * FROM users WHERE username = ?";
         $stmt = $this->connect->prepare($query);
         $stmt->bindParam(1, $this->username);
-
-        $stmt->execute();
-        return $stmt;
+        if($stmt->execute()){
+            return $stmt;
+        }
     }
 
-    public function register($username, $password, $firstname, $middlename, $lastname, $email_address, $division, $id_number, $principal, $supervisor)
+    public function register($data = [])
     {
         $query = "INSERT INTO users(username, password, firstname, middlename, lastname, email_address, division, id_number, principal, supervisor) 
         VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->connect->prepare($query);
-        $stmt->bindParam(1, $username);
-        $stmt->bindParam(2, $password);
-        $stmt->bindParam(3, $firstname);
-        $stmt->bindParam(4, $middlename);
-        $stmt->bindParam(5, $lastname);
-        $stmt->bindParam(6, $email_address);
-        $stmt->bindParam(7, $division);
-        $stmt->bindParam(8, $id_number);
-        $stmt->bindParam(9, $principal);
-        $stmt->bindParam(10, $supervisor);
+        $stmt->bindParam(1, $data['username']);
+        $stmt->bindParam(2, $data['password']);
+        $stmt->bindParam(3, $data['firstname']);
+        $stmt->bindParam(4, $data['middlename']);
+        $stmt->bindParam(5, $data['lastname']);
+        $stmt->bindParam(6, $data['email_address']);
+        $stmt->bindParam(7, $data['division']);
+        $stmt->bindParam(8, $data['id_number']);
+        $stmt->bindParam(9, $data['principal']);
+        $stmt->bindParam(10, $data['supervisor']);
         if ($stmt->execute()) {
             return $stmt;
         }
