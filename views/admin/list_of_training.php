@@ -142,8 +142,17 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
                                                             </div>
                                                             <div class="col-md-12 mt-3">
                                                                 <label for="" class="form-label">Division</label>
-                                                                <input type="text" name="division" id="division"
-                                                                    class="form-control" required>
+                                                                <select name="division" id="division" class="form-select" required>
+                                                                    <option value="" selected disabled>Select</option>
+                                                                    <option value="BD1">BD1</option>
+                                                                    <option value="BD2">BD2</option>
+                                                                    <option value="BD3">BD3</option>
+                                                                    <option value="BSG">BSG</option>
+                                                                    <option value="HR">HR</option>
+                                                                    <option value="FINANCE">FINANCE</option>
+                                                                    <option value="STRAT">STRAT</option>
+                                                                    <option value="PPI">PPI</option>
+                                                                </select>
                                                             </div>
 
                                                             <div class="col-md-12 mt-5 mb-3 text-center">
