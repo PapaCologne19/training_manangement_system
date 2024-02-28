@@ -38,9 +38,19 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <title>Home</title>
+
+       <style>
+        .card {
+            border: none!important;
+            border-radius: 30px !important;
+            background: #e0e0e0 !important;
+            box-shadow: 15px 15px 30px #bebebe,
+                    -15px -15px 30px #ffffff !important;
+        }
+       </style>
     </head>
 
-    <body>
+    <body style="background-color: #e0e0e0 !important;">
         <!-- NavBar -->
         <?php include '../../components/alertMessage.php'; ?>
         <?php include '../../components/nav.php'; ?>
@@ -56,7 +66,7 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
                     ?>
                     <div class="col-md-4">
                         <a href="create.php?id=<?= $row['id']; ?>" class="training_links">
-                            <div class="card p-4 mb-3 shadow-sm rounded">
+                            <div class="card p-4 mb-3">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex flex-row align-items-center">
                                         <i class="bi bi-bank2"></i>

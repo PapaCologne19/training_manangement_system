@@ -37,6 +37,7 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
         <!-- {{-- Sweet Alert --}} -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <title>Register</title>
+
     </head>
 
     <body>
