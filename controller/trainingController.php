@@ -14,10 +14,8 @@ $Training = new Training($connect);
 |--------------------------------------------------------------------------
 | TRAINING REQUESTS REGISTRATION
 |--------------------------------------------------------------------------
-|
 | Here is where the users can request training/s. 
-|
-|
+|--------------------------------------------------------------------------
 */
 if (isset($_POST['register_btn'])) {
     $training_id = $_POST['training_id'];
@@ -70,31 +68,34 @@ if (isset($_POST['register_btn'])) {
 |--------------------------------------------------------------------------
 | ADD TRAINING
 |--------------------------------------------------------------------------
-|
 | Here is where you can register trainings. 
-|
-|
+|--------------------------------------------------------------------------
 */
 if (isset($_POST['add_training_btn'])) {
-    $training_id = md5(true);
-    $training_title = $_POST['training_title'];
+    $training_title = strtoupper(trim($_POST['training_title']));
     $dateTime = $_POST['dateTime'];
-    $venue = $_POST['venue'];
-    $facilitator = $_POST['facilitator'];
-    $division = $_POST['division'];
+    $venue = strtoupper(trim($_POST['venue']));
+    $project_title = strtoupper(trim($_POST['project_title']));
+    $facilitator = strtoupper(trim($_POST['facilitator']));
+    $division = strtoupper(trim($_POST['division']));
+    $objectives = strtoupper(trim($_POST['objectives']));
 
     if (
         !empty($training_title)
-        && !empty($dateTime) && !empty($venue)
-        && !empty($facilitator) && !empty($division)
+        && !empty($dateTime) 
+        && !empty($venue)
+        && !empty($facilitator) 
+        && !empty($division)
+        && !empty($project_title)
     ) {
         $data = [
-            'training_id' => $training_id,
             'training_title' => $training_title,
             'dateTime' => $dateTime,
             'venue' => $venue,
+            'project_title' => $project_title,
             'facilitator' => $facilitator,
             'division' => $division,
+            'objectives' => $objectives,
         ];
         $insert = $Training->store($data);
 
@@ -114,31 +115,36 @@ if (isset($_POST['add_training_btn'])) {
 |--------------------------------------------------------------------------
 | UPDATE TRAINING
 |--------------------------------------------------------------------------
-|
 | Here is where you can update training. 
-|
-|
+|--------------------------------------------------------------------------
 */
 if (isset($_POST['update_training_btn'])) {
     $id = $_POST['token'];
-    $training_title = $_POST['training_title'];
+    $training_title = strtoupper(trim($_POST['training_title']));
     $dateTime = $_POST['dateTime'];
-    $venue = $_POST['venue'];
-    $facilitator = $_POST['facilitator'];
-    $division = $_POST['division'];
+    $venue = strtoupper(trim($_POST['venue']));
+    $project_title = strtoupper(trim($_POST['project_title']));
+    $facilitator = strtoupper(trim($_POST['facilitator']));
+    $division = strtoupper(trim($_POST['division']));
+    $objectives = strtoupper(trim($_POST['objectives']));
 
     if (
         !empty($training_title)
-        && !empty($dateTime) && !empty($venue)
-        && !empty($facilitator) && !empty($division)
+        && !empty($dateTime) 
+        && !empty($venue)
+        && !empty($project_title)
+        && !empty($facilitator) 
+        && !empty($division)
     ) {
 
         $data = [
             'training_title' => $training_title,
             'dateTime' => $dateTime,
             'venue' => $venue,
+            'project_title' => $project_title,
             'facilitator' => $facilitator,
             'division' => $division,
+            'objectives' => $objectives,
             'id' => $id,
         ];
         $update = $Training->update($data);
@@ -150,8 +156,8 @@ if (isset($_POST['update_training_btn'])) {
         }
         header("Location: ../views/admin/list_of_training.php");
     } else {
-        $_SESSION['errorMessage'] = "All fields are required!";
-        header('Location: create.php');
+        $_SESSION['errorMessage'] = "All fields are requireds!";
+        header("Location: ../views/admin/edit_list_of_training.php?id=$id");
     }
 }
 
@@ -159,10 +165,8 @@ if (isset($_POST['update_training_btn'])) {
 |--------------------------------------------------------------------------
 | DELETE TRAINING
 |--------------------------------------------------------------------------
-|
 | Here is where you can delete trainings. 
-|
-|
+|--------------------------------------------------------------------------
 */
 if (isset($_POST['delete_training_button_click'])) {
     $delete_id = $_POST['delete_id'];
@@ -179,10 +183,9 @@ if (isset($_POST['delete_training_button_click'])) {
 |--------------------------------------------------------------------------
 | ACCEPT TRAINING REQUESTS
 |--------------------------------------------------------------------------
-|
-| Here is where you can accept the training requests and notify users via email. 
-|
-|
+| Here is where you can accept the training requests 
+| and notify users via email. 
+|--------------------------------------------------------------------------
 */
 if (isset($_POST['accept_button_click'])) {
     $id = $_POST['accept_id'];
@@ -208,10 +211,9 @@ if (isset($_POST['accept_button_click'])) {
 |--------------------------------------------------------------------------
 | REJECT TRAINING REQUESTS
 |--------------------------------------------------------------------------
-|
-| Here is where you can reject training requests and notify the users via email. 
-|
-|
+| Here is where you can reject training requests
+| and notify the users via email. 
+|--------------------------------------------------------------------------
 */
 if (isset($_POST['reject_button_click'])) {
     $id = $_POST['reject_id'];
@@ -238,10 +240,9 @@ if (isset($_POST['reject_button_click'])) {
 |--------------------------------------------------------------------------
 | SET TRAINING REQUESTS' STATUS AS 'DONE'
 |--------------------------------------------------------------------------
-|
-| Here is where you can set the training requests' status as Done and notify the users via email. 
-|
-|
+| Here is where you can set the training requests' status as Done
+| and notify the users via email. 
+|--------------------------------------------------------------------------
 */
 if (isset($_POST['button_click'])) {
     $id = $_POST['id'];

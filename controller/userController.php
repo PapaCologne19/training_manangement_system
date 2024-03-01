@@ -14,10 +14,9 @@ $Check = new Check($connect);
 |--------------------------------------------------------------------------
 | USER LOGIN
 |--------------------------------------------------------------------------
-|
-| Here is where you can process the user's credentials to login into their account. 
-|
-|
+| Here is where you can process the user's credentials to login 
+| into their account. 
+|--------------------------------------------------------------------------
 */
 if (isset($_POST['login-submit'])) {
     $User->username = $_POST['username'];
@@ -88,10 +87,8 @@ if (isset($_POST['login-submit'])) {
 |--------------------------------------------------------------------------
 | USER REGISTRATION
 |--------------------------------------------------------------------------
-|
 | Here is where the users can register their account. 
-|
-|
+|--------------------------------------------------------------------------
 */
 
 if (isset($_POST['register_btn'])) {

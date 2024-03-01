@@ -58,18 +58,20 @@ if (file_exists($counterFile)) {
 <body>
     <?php include 'components/alertMessage.php'; ?>
     <center>
-        <div class="containers">
-            <div class="row justify-content-center w-100">
-                <div class="login-form col-lg-6 col-md-12 col-sm-12 rounded-2 shadow-lg p-3 mb-5">
+        <div class="containers position-absolute top-50 start-50 translate-middle">
+            <div class="row justify-content-center">
+                <div class="login-form col-lg-6 col-md-12 col-sm-12 ">
                     <div class="panel">
                         <div class="panel-heading pt-3">
                             <div class="panel-title text-center mt-4" id="title">
-                                <img src="assets/img/logo/pcn.png" alt="PCN Logo" width="50%"
+                                <img src="assets/img/logo/pcn.png" alt="PCN Logo" width="20%"
                                     class="logo img-responsive">
-                                <hr>
+                                <div class="col-lg-12 login-title">
+                                    LOGIN PANEL
+                                </div>
                             </div>
                         </div>
-                        <div class="panel-body mt-3">
+                        <div class="panel-body mt-5">
                             <div class="row">
                                 <div class="col-lg-12 forms">
                                     <form id="login-form" class="col-lg-offset-1 col-lg-10 forms"
@@ -95,15 +97,16 @@ if (file_exists($counterFile)) {
                                                 Show password
                                             </label>
                                         </div>
-                                        <div class="col-md-12 col-sm-6 col-sm-offset-3 mt-5">
-                                            <button type="submit" name="login-submit" id="login-submit" tabindex="3"
-                                                class="btn btn-login" value="LOGIN"> Log in</button>
-                                        </div>
-                                        <div class="col-sm-12 col-md-12 pt-4 pb-4 mb-5">
+                                        <div class="col-sm-12 col-md-12 pt-4 pb-4">
                                             <a href="javascript:void(0)" class="registerAccount link"
                                                 style="color: #BABABA;" data-bs-toggle="modal"
-                                                data-bs-target="#registerModal"> Register Account here</a>
+                                                data-bs-target="#registerModal">Don't have account?</a>
                                         </div>
+                                        <div class="col-md-12 col-sm-6 col-sm-offset-3 mt-2 mb-5">
+                                            <button type="submit" name="login-submit" id="login-submit" tabindex="3"
+                                                class="btn btn-login" value="LOGIN">LOGIN</button>
+                                        </div>
+                                        
                                     </form>
                                 </div>
                             </div>
@@ -200,9 +203,9 @@ if (file_exists($counterFile)) {
                                     $show = $Supervisor->show();
                                     while ($row = $show->fetch(PDO::FETCH_ASSOC)) {
                                         ?>
-                                        <option value="<?php echo $row['supervisor']; ?>">
-                                            <?php echo $row['supervisor']; ?>
-                                        </option>
+                                                        <option value="<?php echo $row['supervisor']; ?>">
+                                                            <?php echo $row['supervisor']; ?>
+                                                        </option>
                                     <?php } ?>
                                 </datalist>
                             </div>

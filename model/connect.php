@@ -6,7 +6,11 @@ class Database{
     private $database = "training";
     private $connect;
     
-    /** Function for Connecting database to your site **/
+    /*
+    |------------------------------------------------------------
+    | Function for Connecting database to your site
+    |------------------------------------------------------------
+    */
     public function connect(){
         $this->connect;
         try {

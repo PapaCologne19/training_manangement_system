@@ -11,7 +11,11 @@ class Supervisor
     }
     
 
-    /** Function for Showing all the supervisors **/
+    /*
+    |------------------------------------------------------------
+    | Function for Showing all the supervisors
+    |------------------------------------------------------------
+    */
     public function show()
     {
         $query = "SELECT * FROM supervisor";

@@ -8,31 +8,41 @@
     src: url('../fonts/Inter/static/Inter-Regular.ttf');
 }
 
+@font-face {
+    font-family: Comfortaa;
+    src: url('../fonts/Comfortaa/static/Comfortaa-Regular.ttf');
+}
+
 * {
-    font-family: 'Inter', sans-serif !important;
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 .body {
-    background-image: url('../img/backgrounds/bg.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
+    background: #e0e0e0;
+    font-family: 'Comfortaa', sans-serif !important;
+    width: 100%;
 }
 
-#username,
-#password {
-    border-top: none !important;
-    border-right: none !important;
-    border-left: none !important;
-    border-bottom: 1px solid inherit !important;
-    border-radius: 0 !important;
-    padding: 20px !important;
-    background: transparent;
-    color: white !important;
+.login-title {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #7d6e6e;
+    font-family: 'Comfortaa', sans-serif !important;
+}
+
+#username, #password {
+    background: #e0e0e0 !important;
+    border-bottom: 2px solid #B1B1B1 !important;
+    color: black !important;
+    font-family: 'Comfortaa', sans-serif !important;
+    margin-top: 1rem;
 }
 
 #username:focus,
@@ -42,9 +52,8 @@
     border-top: none !important;
     border-right: none !important;
     border-left: none !important;
-    border-bottom: 1px solid inherit !important;
     border-radius: 0 !important;
-    color: white;
+    color: black;
 }
 
 #username::placeholder,
@@ -53,21 +62,19 @@
 }
 
 .btn-login {
-    padding: 10px !important;
-    width: 100% !important;
+    padding: 1rem 4rem !important;
     border-radius: 8px !important;
-    color: white !important;
-    background-color: transparent !important;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    border: none !important;
-    transition: 0.6s ease-in, color 0.6s ease-in;
+    color: black !important;
+    font-family: 'Comfortaa', sans-serif !important;
+    border: 1px solid #B1B1B1 !important;
+    background: none;
+    transition: ease-in-out 0.5s !important;
+
 }
 
-.btn-login:hover {
-    transition: 0.6s ease-in, color 0.6s ease-in;
-    background: linear-gradient(112.1deg,  rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% );
-    border: none !important;
-    color: white !important;
+.btn-login:hover{
+    border: 1px solid black !important;
+    font-size: 1.1rem;
 }
 
 h4 {
@@ -131,7 +138,7 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     -webkit-background-clip: text;
-    -webkit-text-fill-color: #e0e0e0;
+    -webkit-text-fill-color: black;
     transition: background-color 5000s ease-in-out 0s;
     box-shadow: inset 0 0 20px 20px transparent;
 }
@@ -144,19 +151,37 @@ input:-webkit-autofill:active {
     color: #BABABA;
 }
 
-.containers {
-    position: absolute !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translateY(-50%) !important;
+.login-form {
+    border: none !important;
+    border-radius: 50px !important;
+    background: #e0e0e0 !important;
+    box-shadow: 15px 15px 30px #bebebe,
+        -15px -15px 30px #ffffff !important;
 }
 
-.contain{
+.contain {
     display: grid;
     grid-template-columns: 0fr 0fr;
     grid-template-rows: 0fr 0fr;
     gap: 5px;
-    margin: 0 auto; 
+    margin: 0 auto;
+}
+
+.form-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: inherit;
+    color: #566a7f;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    color: #697a8d !important;
+
+    font-size: 0.9375rem !important;
+    font-weight: 400 !important;
+    line-height: 1.53 !important;
 }
 
 @media screen and (max-width: 1600px) {
@@ -167,9 +192,6 @@ input:-webkit-autofill:active {
         transform: translate(-50%, -50%) !important;
     }
 
-    .login-form {
-        background-color: #1f2568 !important;
-    }
 }
 
 @media screen and (max-width: 560px) {

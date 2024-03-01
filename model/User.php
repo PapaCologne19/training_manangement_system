@@ -10,6 +10,11 @@ class User
         $this->connect = $connect;
     }
 
+    /*
+    |------------------------------------------------------------
+    | Function for Login
+    |------------------------------------------------------------
+    */
     public function login(){
         $query = "SELECT * FROM users WHERE username = ?";
         $stmt = $this->connect->prepare($query);
@@ -19,6 +24,11 @@ class User
         }
     }
 
+    /*
+    |------------------------------------------------------------
+    | Function for Registering new user
+    |------------------------------------------------------------
+    */
     public function register($data = [])
     {
         $query = "INSERT INTO users(username, password, firstname, middlename, lastname, email_address, division, id_number, principal, supervisor) 
@@ -39,6 +49,11 @@ class User
         }
     }
 
+    /*
+    |------------------------------------------------------------
+    | Function for saving logs
+    |------------------------------------------------------------
+    */
     public function logs($username, $name, $usertype, $count){
         $query = "INSERT INTO logs (username, name, user_type, count_visit) VALUES (?, ?, ?, ?)";
         $stmt = $this->connect->prepare($query);

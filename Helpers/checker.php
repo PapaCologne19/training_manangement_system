@@ -9,6 +9,12 @@ class Check
         $this->connect = $connect;
     }
 
+    /*
+    |---------------------------------------------------------------------
+    | Function for Selecting email address based on the provided email 
+    | passed in parameter
+    |---------------------------------------------------------------------
+    */
     public function email($email)
     {
         $query = "SELECT * FROM users WHERE email_address = ?";
@@ -25,6 +31,12 @@ class Check
         }
     }
 
+    /*
+    |---------------------------------------------------------------------
+    | Function for Selecting Username based on the provided username 
+    | passed in parameter
+    |---------------------------------------------------------------------
+    */
     public function username($username)
     {
         $query = "SELECT * FROM users WHERE username = ?";
